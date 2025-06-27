@@ -1,0 +1,7 @@
+streamlit
+pandas
+openpyxl
+google-generativeai
+streamlit-mic-recorder
+pydub
+SpeechRecognition
