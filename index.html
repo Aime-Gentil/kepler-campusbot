@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Kepler CampusBot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Font - Inter from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background, complements the new colors */
+            color: #334155; /* Dark slate text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        /* Hero section background is now white */
+        .hero-section-bg-white {
+            background-color: white;
+        }
+        /* Custom button styling for interactivity - Now using requested dominant green */
+        .btn-primary {
+            background-color: #439947; /* Dominant green */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 600;
+            transition: all 0.3s ease; /* Smooth transition for hover */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: #367a3a; /* Darker green on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        /* Card styling for sections */
+        .card {
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+        }
+        /* Animation for section reveal */
+        .animate-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Animation for icons/graphics */
+        .animate-pop-in {
+            animation: popIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            80% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        /* Background pattern/overlay for visual interest */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at center, #bfdbfe 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        /* Ensure responsive image sizing */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+    <div class="bg-pattern fixed inset-0"></div>
+
+    <section class="relative hero-section-bg-white text-center py-20 md:py-32 w-full rounded-b-3xl overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight animate-pop-in text-[#2A527A]" style="animation-delay: 0.2s;">
+                Your Instant Guide to Kepler College
+            </h1>
+            <p class="text-lg md:text-xl mb-8 opacity-90 animate-pop-in text-[#2A527A]" style="animation-delay: 0.4s;">
+                Get quick and accurate answers to all your questions about policies, services, and campus events.
+            </p>
+            </div>
+    </section>
+
+    <section class="py-16 px-6 w-full max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-700 animate-reveal">How CampusBot Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card animate-reveal" style="animation-delay: 0.2s;">
+                <div class="text-5xl mb-4 text-[#2A527A] text-center">💡</div>
+                <h3 class="text-xl font-semibold mb-2 text-slate-800 text-center">Ask Your Question</h3>
+                <p class="text-center text-slate-600">Type or speak your questions about policies, services, events, and more.</p>
+            </div>
+            <div class="card animate-reveal" style="animation-delay: 0.4s;">
+                <div class="text-5xl mb-4 text-[#439947] text-center">🧠</div>
+                <h3 class="text-xl font-semibold mb-2 text-slate-800 text-center">Instant AI Response</h3>
+                <p class="text-center text-slate-600">Our AI swiftly processes your query using a comprehensive knowledge base.</p>
+            </div>
+            <div class="card animate-reveal" style="animation-delay: 0.6s;">
+                <div class="text-5xl mb-4 text-[#2A527A] text-center">✅</div>
+                <h3 class="text-xl font-semibold mb-2 text-slate-800 text-center">Get Accurate Answers</h3>
+                <p class="text-center text-slate-600">Receive precise and helpful information tailored to Kepler College.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-16 px-6 w-full rounded-t-3xl">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-700 animate-reveal">What CampusBot Can Do For You</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card animate-reveal bg-[#439947] text-white" style="animation-delay: 0.1s;">
+                    <h4 class="font-bold text-lg mb-2">24/7 Availability</h4>
+                    <p>Access information anytime, anywhere, even outside office hours.</p>
+                </div>
+                <div class="card animate-reveal bg-[#2A527A] text-white" style="animation-delay: 0.2s;">
+                    <h4 class="font-bold text-lg mb-2">Voice Input Support</h4>
+                    <p>Ask questions naturally using your voice for convenience.</p>
+                </div>
+                <div class="card animate-reveal bg-[#439947] text-white" style="animation-delay: 0.3s;">
+                    <h4 class="font-bold text-lg mb-2">Policy Clarity</h4>
+                    <p>Understand complex college policies with simple, clear explanations.</p>
+                </div>
+                <div class="card animate-reveal bg-[#2A527A] text-white" style="animation-delay: 0.4s;">
+                    <h4 class="font-bold text-lg mb-2">Service Navigation</h4>
+                    <p>Quickly find information about student services and departments.</p>
+                </div>
+                <div class="card animate-reveal bg-[#439947] text-white" style="animation-delay: 0.5s;">
+                    <h4 class="font-bold text-lg mb-2">Event Updates</h4>
+                    <p>Stay informed about campus events, deadlines, and announcements.</p>
+                </div>
+                <div class="card animate-reveal bg-[#2A527A] text-white" style="animation-delay: 0.6s;">
+                    <h4 class="font-bold text-lg mb-2">FAQ Access</h4>
+                    <p>Get answers to frequently asked questions instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for scroll-triggered animations (reveal effect)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.animate-reveal').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
