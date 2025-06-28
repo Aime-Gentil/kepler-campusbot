@@ -8,6 +8,19 @@ from pydub import AudioSegment
 import os
 import streamlit.components.v1 as components
 from urllib.parse import urlparse, parse_qs
+import pydub.utils
+
+# --- DEBUGGING CODE FOR FFMPEG PATH ---
+print("--- STARTING FFMPEG PATH DEBUG ---")
+try:
+    # This checks where pydub is looking for the binaries
+    ffmpeg_path = pydub.utils.get_prober_name()
+    print(f"DEBUG: pydub is looking for FFmpeg/ffprobe at: {ffmpeg_path}")
+    print(f"DEBUG: PATH environment variable is: {os.environ.get('PATH')}")
+except Exception as e:
+    print(f"DEBUG: Could not find FFmpeg/ffprobe. Error: {e}")
+print("--- ENDING FFMPEG PATH DEBUG ---")
+
 
 # --- CONFIGURE GOOGLE GEMINI ---
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
@@ -135,14 +148,13 @@ elif current_page == "chat":
             st.markdown(msg["content"])
 
     # --- SPEECH TO TEXT FUNCTION ---
-    # NOTE: This function uses hardcoded paths which are specific to your system.
-    # You will need to change them if you move this code to a different computer.
     def transcribe_audio(audio_bytes_data):
         tmpfile_path = None
         try:
-            # IMPORTANT: Update these paths if FFmpeg is installed in a different location.
-            AudioSegment.converter = "C:/Aims/kepler_chatbot/ffmpeg-2025-06-26-git-09cd38e9d5-essentials_build/bin/ffmpeg.exe"
-            AudioSegment.ffprobe = "C:/Aims/kepler_chatbot/ffmpeg-2025-06-26-git-09cd38e9d5-essentials_build/bin/ffprobe.exe"
+            # NOTE: These lines are commented out for cloud deployment.
+            # The 'ffmpeg' package installed from packages.txt should be available on the system PATH.
+            # AudioSegment.converter = "C:/Aims/kepler_chatbot/ffmpeg-2025-06-26-git-09cd38e9d5-essentials_build/bin/ffmpeg.exe"
+            # AudioSegment.ffprobe = "C:/Aims/kepler_chatbot/ffmpeg-2025-06-26-git-09cd38e9d5-essentials_build/bin/ffprobe.exe"
             
             with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmpfile:
                 tmpfile.write(audio_bytes_data)
@@ -205,7 +217,7 @@ elif current_page == "chat":
             window.scrollTo(0, document.body.scrollHeight);
         </script>
         """,
-        height=0,  # Make the component invisible
+        height=0,   # Make the component invisible
     )
 
 elif current_page == "about":
